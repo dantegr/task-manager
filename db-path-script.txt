@@ -1,1 +1,1 @@
-/Users/Pantelis/mongodb/bin/mongodb.exe --dbpath=/Users/Pantelis/mongodb-data
+/Users/Pantelis/mongodb/bin/mongod.exe --dbpath=/Users/Pantelis/mongodb-data

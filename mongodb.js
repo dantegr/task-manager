@@ -1,8 +1,11 @@
 const mongodb = require('mongodb');
 const MongoClient = mongodb.MongoClient;
+const ObjectID = mongodb.ObjectID;
+
 
 const connectionURL = 'mongodb://127.0.0.1:27017';
 const databaseName = 'task-manager';
+
 
 MongoClient.connect(connectionURL, { useNewUrlParser:true }, (error,client) => {
   if (error) {
@@ -11,21 +14,19 @@ MongoClient.connect(connectionURL, { useNewUrlParser:true }, (error,client) => {
 
   const db = client.db(databaseName);
 
-  db.collection('tasks').insertMany([
-    {
-      description:'Clean dishes',
-      completed: true
-    }, {
-      description:'Do udemy',
-      completed: false
-    }, {
-      description:'Study swedish',
-      completed: true
-    },
-  ], (error,result) => {
-    if(error) {
-      return console.log('Unable to insert tasks');
-    }
-    console.log(result.ops);
+  db.collection('users').find({age: 32}).toArray((error,user) => {
+    if (error) {
+      return console.log('Unable to fetch');
+     }
+
+     console.log(user);
+  });
+
+  db.collection('users').find({age: 32}).count((error,user) => {
+    if (error) {
+      return console.log('Unable to fetch');
+     }
+
+     console.log(user);
   });
 });
